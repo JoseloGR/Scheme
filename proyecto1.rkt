@@ -1,27 +1,27 @@
 #lang racket
 
 (define (un-nuevo-mes d m y)
-  (write '1)
-  (write '-)
-  (write (+ m 1))
-  (write '-)
-  (write (+ y 0))
+  (display '1)
+  (display '-)
+  (display (+ m 1))
+  (display '-)
+  (display (+ y 0))
 )
 
 (define (feliz-anio-nuevo d m y)
-  (write '1)
-  (write '-)
-  (write '1)
-  (write '-)
-  (write (+ y 1))
+  (display '1)
+  (display '-)
+  (display '1)
+  (display '-)
+  (display (+ y 1))
 )
 
 (define (un-nuevo-dia d m y)
-  (write (+ d 1))
-  (write '-)
-  (write (+ m 0))
-  (write '-)
-  (write (+ y 0))
+  (display (+ d 1))
+  (display '-)
+  (display (+ m 0))
+  (display '-)
+  (display (+ y 0))
 )
 
 (define (busqueda-mes m)
@@ -37,6 +37,14 @@
         1
         0
     )
+)
+
+(define (imprime-fecha d m y)
+  (display d)
+  (display '-)
+  (display m)
+  (display '-)
+  (display y)
 )
 
 (define (fecha-no-valida)

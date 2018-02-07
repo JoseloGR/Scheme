@@ -1,0 +1,31 @@
+#lang racket
+
+(define (suma-lista b)
+  (if (null? b)
+      0
+      (+ (car b) (suma-lista (cdr b)))
+  )
+)
+
+(define (operador-lista f i lista)
+  (if (null? lista)
+      i
+      (f (car lista) (operador-lista f i (cdr lista)))
+  )
+)
+
+(define (lista-reversa lista)
+  (if (null? lista)
+      '()
+      (cons (lista-reversa (cdr lista)) (car lista))
+  )
+)
+
+(foldl + 0 '(1 2 3 4))
+
+(define (fact n)
+  (if (= n 0)
+      1
+      (* n (fact(- n 1)))
+  )
+)
