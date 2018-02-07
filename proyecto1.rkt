@@ -1,0 +1,38 @@
+#lang racket
+
+(define (funcion1 d m y)
+  (write '1)
+  (write '-)
+  (write (+ m 1))
+  (write '-)
+  (write (+ y 0))
+)
+
+(define (funcion2 d m y)
+  (write '1)
+  (write '-)
+  (write '1)
+  (write '-)
+  (write (+ y 1))
+)
+
+(define (funcion3 d m y)
+  (write (+ d 1))
+  (write '-)
+  (write (+ m 0))
+  (write '-)
+  (write (+ y 0))
+)
+
+(define (dia-siguiente d m y)
+  (cond
+    ( (and (not(eq? (modulo m 2) 0)) (>= m 1) (<= m 7) (eq? d 31)) (funcion1 d m y) )
+    ( (and (eq? (modulo m 2) 0) (>= m 8) (< m 12) (eq? d 31)) (funcion1 d m y) )
+    ( (and (eq? (modulo m 2) 0) (>= m 4) (<= m 6) (eq? d 30)) (funcion1 d m y) )
+    ( (and (not(eq? (modulo m 2) 0)) (>= m 9) (<= m 11) (eq? d 30)) (funcion1 d m y) )
+    ( (and (eq? m 2) (eq? (modulo y 4) 0) (eq? d 29)) (funcion1 d m y) )
+    ( (and (eq? m 2) (not(eq? (modulo y 4) 0)) (eq? d 28)) (funcion1 d m y) )
+    ( (and (eq? m 12) (eq? d 31)) (funcion2 d m y) )
+    ( (> d 0) funcion3 d m y)
+  )
+)

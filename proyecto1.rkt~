@@ -1,0 +1,7 @@
+#lang racket
+
+(define (dia-siguiente d m y)
+  (cond ( (not(eq? (modulo m 2) 0)) (+ m 1))
+        ((= d 12) d)
+  )
+)
