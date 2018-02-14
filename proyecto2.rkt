@@ -13,41 +13,42 @@
  )
 )
 
-(define (ordenamiento-interno lista)
+(define (ordenamiento-interno operador lista)
   (
     (lambda (primero resto)
       (if (null? resto)
           lista
           (
-            (lambda (cd)
-              (let ((ca2 (car cd)) (cd2 (cdr cd)))
-                (if (>= primero ca2)
-                    (cons primero cd)
-                    (cons ca2 (cons primero cd2))
-                    )
+            (lambda (resto-menos-uno)
+              (
+                (lambda (segundo resto-menos-dos)
+                  (if (operador primero segundo)
+                      (cons primero resto-menos-uno)
+                      (cons segundo (cons primero resto-menos-dos))
+                  )
+                )(car resto-menos-uno)(cdr resto-menos-uno)  
               )
-            )(ordenamiento-interno resto)
-          )
-          
+            )(ordenamiento-interno operador resto)
+          )   
       )
     )(car lista)(cdr lista)
   )
   
 )
 
-(define (ordenamiento-burbuja lista)
+(define (ordenamiento-burbuja operador lista)
   (if (null? lista)
       '()
       (
         (lambda (lo)
-          (cons (car lo) (ordenamiento-burbuja (cdr lo)))
-        )(ordenamiento-interno lista)
+          (cons (car lo) (ordenamiento-burbuja operador (cdr lo)))
+        )(ordenamiento-interno operador lista)
       )
   )
 )
 
-(define (burbuja string1)
-  (ordenamiento-burbuja (leer-archivo string1))
+(define (burbuja operador string1)
+  (ordenamiento-burbuja operador (leer-archivo string1))
 )
 
 ;multiplicacion con asignacion
