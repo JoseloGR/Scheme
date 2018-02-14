@@ -1,0 +1,14 @@
+#lang racket
+
+(define (lee-archivo archivo)
+ (call-with-input-file archivo
+   (lambda (p)
+     (let f ((x (read p)))
+       (if (eof-object? x)
+           '()
+           (cons x (f (read p)))
+       )
+     )
+   )
+ )
+)
