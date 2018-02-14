@@ -13,6 +13,23 @@
  )
 )
 
+(define (guardar-archivo string2 lista)
+  (call-with-output-file string2
+    (lambda (p)
+      (let f ((ls lista))
+        (if (not (null? ls))
+          (begin
+            (write (car ls) p)
+            (newline p)
+            (f (cdr ls))
+          )
+          null
+        )
+      )
+    )
+  )
+)
+
 (define (ordenamiento-interno operador lista)
   (
     (lambda (primero resto)
@@ -47,8 +64,8 @@
   )
 )
 
-(define (burbuja operador string1)
-  (ordenamiento-burbuja operador (leer-archivo string1))
+(define (burbuja operador string1 string2)
+  (guardar-archivo string2 (ordenamiento-burbuja operador (leer-archivo string1)))
 )
 
 ;multiplicacion con asignacion
