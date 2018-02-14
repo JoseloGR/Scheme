@@ -67,13 +67,3 @@
 (define (burbuja operador string1 string2)
   (guardar-archivo string2 (ordenamiento-burbuja operador (leer-archivo string1)))
 )
-
-;multiplicacion con asignacion
-(let ((x 2) (y 3))
-  (* x y)
-)
-
-;multiplicacion con lambda
-((lambda (x y)
-  (* x y)
-) 2 3)
