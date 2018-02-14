@@ -13,20 +13,26 @@
  )
 )
 
-(define (bubble-sort-inner lista)
-  (let ((ca1 (car lista)) (cd1 (cdr lista)))
-    (if (null? cd1)
-        lista 
-        (let ((cd (bubble-sort-inner cd1))) 
-          (let ((ca2 (car cd)) (cd2 (cdr cd)))
-            (if (<= ca1 ca2)
-                (cons ca1 cd)
-                (cons ca2 (cons ca1 cd2))
-            )
+(define (ordenamiento-interno lista)
+  (
+    (lambda (primero resto)
+      (if (null? resto)
+          lista
+          (
+            (lambda (cd)
+              (let ((ca2 (car cd)) (cd2 (cdr cd)))
+                (if (>= primero ca2)
+                    (cons primero cd)
+                    (cons ca2 (cons primero cd2))
+                    )
+              )
+            )(ordenamiento-interno resto)
           )
-        )
-     )
+          
+      )
+    )(car lista)(cdr lista)
   )
+  
 )
 
 (define (ordenamiento-burbuja lista)
@@ -35,11 +41,8 @@
       (
         (lambda (lo)
           (cons (car lo) (ordenamiento-burbuja (cdr lo)))
-        ) (bubble-sort-inner lista)
+        )(ordenamiento-interno lista)
       )
-      ;(let ((s (bubble-sort-inner lista)))
-      ;  (cons (car s) (ordenamiento-burbuja (cdr s)))
-      ;)
   )
 )
 
