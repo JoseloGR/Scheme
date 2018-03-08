@@ -1,0 +1,49 @@
+#lang racket
+
+;Funciones para el problema 4
+(define (distancia p0 p1)
+  (
+   raiz (+ (cuadrado(opera - p0)) (cuadrado(opera - p1)))   
+  )
+)
+
+(define (opera operador lista)
+  (
+   (lambda (l1 l2)
+     (operador l2 l1)
+   )(car lista)(cadr lista)
+  )
+)
+
+(define (opera-lambda f a b)
+  (f a b)
+)
+
+(define (cuadrado a)
+  (* a a)
+)
+
+(define (raiz a)
+  (sqrt a)
+)
+
+;Funciones para el problema 5
+(define (union a b)
+  (append a b)
+)
+
+(define (interseccion lista lista2)
+  (if (null? lista)
+      '()
+      (if (member (car lista) lista2 )
+          (cons (car lista) (interseccion (cdr lista) lista2))
+          (interseccion (cdr lista) lista2)
+      )
+      
+  )
+)
+
+;Funciones para el problema 6
+(define (dec2bin N D)
+  (write N)
+)
